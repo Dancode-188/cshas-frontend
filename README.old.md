@@ -8,4 +8,4 @@ The CSHAS Frontend is the web-based user interface for the Customizable Smart Ho
 - Device control and monitoring
 - Real-time updates and notifications
 - Customizable automation rules and scenes
-- Responsive and interactive user interface interface
+- Responsive and interactive user interface
