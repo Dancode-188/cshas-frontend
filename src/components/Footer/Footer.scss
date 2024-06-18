@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lighten($background-color, 10%);
+  padding: 1rem;
+  font-size: 14px;
+
+  .footer-links {
+    display: flex;
+    gap: 1rem;
+
+    .footer-link {
+      color: $text-color;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      fill: $secondary-color;
+      transition: fill 0.3s;
+
+      &:hover {
+        fill: $accent-color;
+      }
+    }
+  }
+
+  .footer-text {
+    color: $text-color;
+  }
+}
