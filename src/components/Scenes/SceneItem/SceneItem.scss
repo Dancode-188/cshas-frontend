@@ -1,0 +1,90 @@
+@import '../../styles/variables.scss';
+
+.scene-item {
+  background-color: $secondary-color;
+  border-radius: 4px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+
+  .scene-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+
+  .scene-details {
+    margin-bottom: 1rem;
+
+    .scene-name {
+      font-size: 1.2rem;
+      color: $text-color;
+      margin-bottom: 0.5rem;
+    }
+
+    .scene-description {
+      font-size: 0.9rem;
+      color: $text-color;
+    }
+  }
+
+  .scene-actions {
+    display: flex;
+    gap: 1rem;
+
+    .activate-button,
+    .deactivate-button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: $text-color;
+      background-color: $accent-color;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($accent-color, 10%);
+      }
+    }
+
+    .deactivate-button {
+      background-color: $error-color;
+
+      &:hover {
+        background-color: darken($error-color, 10%);
+      }
+    }
+
+    .edit-button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: $text-color;
+      background-color: $primary-color;
+      text-decoration: none;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
