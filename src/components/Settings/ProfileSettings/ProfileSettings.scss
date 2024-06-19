@@ -1,0 +1,57 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.profile-settings {
+  background-color: $secondary-color;
+  padding: $spacing-large;
+  border-radius: 4px;
+
+  .section-title {
+    @include futuristic-typography;
+    margin-bottom: $spacing-large;
+  }
+
+  .success-message {
+    color: green;
+    margin-bottom: $spacing-medium;
+  }
+
+  .error-message {
+    color: red;
+    margin-bottom: $spacing-medium;
+  }
+
+  form {
+    .form-group {
+      margin-bottom: $spacing-medium;
+
+      label {
+        display: block;
+        color: $text-color;
+        margin-bottom: $spacing-small;
+      }
+
+      input {
+        width: 100%;
+        padding: $spacing-small;
+        border: none;
+        background-color: $background-color;
+        color: $text-color;
+      }
+    }
+
+    .submit-button {
+      @include futuristic-typography;
+      background-color: $accent-color;
+      color: $text-color;
+      border: none;
+      padding: $spacing-medium $spacing-large;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: lighten($accent-color, 10%);
+      }
+    }
+  }
+}
