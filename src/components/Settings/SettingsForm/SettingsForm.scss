@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.settings-form {
+  display: flex;
+  background-color: $background-color;
+  color: $text-color;
+  padding: $spacing-large;
+
+  .settings-tabs {
+    width: 200px;
+    margin-right: $spacing-large;
+
+    .settings-tab {
+      @include futuristic-typography;
+      padding: $spacing-medium;
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: lighten($background-color, 10%);
+      }
+
+      &.active {
+        background-color: $primary-color;
+      }
+    }
+  }
+
+  .settings-content {
+    flex: 1;
+  }
+
+  .save-button {
+    @include futuristic-typography;
+    background-color: $accent-color;
+    color: $text-color;
+    border: none;
+    padding: $spacing-medium $spacing-large;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: lighten($accent-color, 10%);
+    }
+  }
+}
