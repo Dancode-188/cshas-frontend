@@ -44,3 +44,24 @@ export async function updateDevice(deviceId, updates) {
     return false;
   }
 }
+
+// Add a new device
+export async function addDevice(deviceData) {
+  try {
+    const response = await api.post(API_DEVICES_ENDPOINT, deviceData);
+    return response.data;
+  } catch (error) {
+    console.error("Failed to add device:", error);
+    throw error;
+  }
+}
+
+// Delete a device
+export async function deleteDevice(deviceId) {
+  try {
+    await api.delete(`${API_DEVICES_ENDPOINT}/${deviceId}`);
+  } catch (error) {
+    console.error(`Failed to delete device with ID ${deviceId}:`, error);
+    throw error;
+  }
+}
