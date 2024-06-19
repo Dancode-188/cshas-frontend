@@ -3,6 +3,8 @@ export const API_BASE_URL = "https://api.cshas.com";
 export const API_DEVICES_ENDPOINT = "/devices";
 export const API_AUTOMATIONS_ENDPOINT = "/automations";
 export const API_SCENES_ENDPOINT = "/scenes";
+export const API_ENERGY_ENDPOINT = '/energy';
+export const API_USER_ENDPOINT = '/user';
 
 // Authentication
 export const AUTH_TOKEN_KEY = "cshas_auth_token";

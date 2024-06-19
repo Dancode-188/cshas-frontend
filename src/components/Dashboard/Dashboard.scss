@@ -7,7 +7,18 @@
   .dashboard-title {
     color: $primary-color;
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .user-profile {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+
+    .user-name {
+      color: $text-color;
+      font-size: 1.2rem;
+    }
   }
 
   .dashboard-grid {

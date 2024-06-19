@@ -7,11 +7,13 @@ import QuickActions from "./QuickActions";
 import { fetchDevices } from "../../services/deviceService";
 import { fetchAutomations } from "../../services/automationService";
 import { fetchEnergyData } from "../../services/energyService";
+import { fetchUserProfile } from "../../services/userService";
 
 const Dashboard = () => {
   const [devices, setDevices] = useState([]);
   const [automations, setAutomations] = useState([]);
   const [energyData, setEnergyData] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,9 +21,11 @@ const Dashboard = () => {
         const devicesData = await fetchDevices();
         const automationsData = await fetchAutomations();
         const energyData = await fetchEnergyData();
+        const userProfile = await fetchUserProfile();
         setDevices(devicesData);
         setAutomations(automationsData);
         setEnergyData(energyData);
+        setUserProfile(userProfile);
       } catch (error) {
         console.error("Failed to fetch dashboard data:", error);
       }
@@ -33,6 +37,11 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <h2 className="dashboard-title">Smart Home Dashboard</h2>
+      {userProfile && (
+        <div className="user-profile">
+          <span className="user-name">{userProfile.name}</span>
+        </div>
+      )}
       <div className="dashboard-grid">
         <div className="dashboard-item">
           <DeviceOverview devices={devices} />
