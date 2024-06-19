@@ -1,0 +1,41 @@
+@import '../../styles/variables.scss';
+
+.automation-status {
+  .automation-status-title {
+    color: $primary-color;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .automation-list {
+    list-style: none;
+    padding: 0;
+
+    .automation-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+
+      .automation-name {
+        color: $text-color;
+      }
+
+      .automation-status {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+
+        &.active {
+          background-color: $success-color;
+          color: $text-color;
+        }
+
+        &.inactive {
+          background-color: $error-color;
+          color: $text-color;
+        }
+      }
+    }
+  }
+}
