@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./EditAutomation.scss";
 import {
   fetchAutomationById,
   updateAutomation,
-} from "../../services/automationService";
+} from "../../../services/automationService";
 
 const EditAutomation = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { automationId } = useParams();
   const [formData, setFormData] = useState({
     name: "",
@@ -26,12 +26,12 @@ const EditAutomation = () => {
         setIsLoading(false);
       } catch (error) {
         console.error("Failed to fetch automation:", error);
-        history.push("/automations");
+        navigate("/automations");
       }
     };
 
     fetchAutomation();
-  }, [automationId, history]);
+  }, [automationId, navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,7 +44,7 @@ const EditAutomation = () => {
       setIsLoading(true);
       try {
         await updateAutomation(automationId, formData);
-        history.push("/automations");
+        navigate("/automations");
       } catch (error) {
         console.error("Failed to update automation:", error);
         // Display error feedback to the user
@@ -79,7 +79,7 @@ const EditAutomation = () => {
         <h2>Edit Automation</h2>
         <button
           className="close-button"
-          onClick={() => history.push("/automations")}
+          onClick={() => navigate("/automations")}
         >
           Close
         </button>

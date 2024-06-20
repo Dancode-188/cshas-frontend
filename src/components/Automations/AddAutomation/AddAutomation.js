@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./AddAutomation.scss";
-import { createAutomation } from "../../services/automationService";
+import { createAutomation } from "../../../services/automationService";
 
 const AddAutomation = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -25,7 +25,7 @@ const AddAutomation = () => {
       setIsLoading(true);
       try {
         await createAutomation(formData);
-        history.push("/automations");
+        navigate("/automations");
       } catch (error) {
         console.error("Failed to create automation:", error);
         // Display error feedback to the user
@@ -56,7 +56,7 @@ const AddAutomation = () => {
         <h2>Add Automation</h2>
         <button
           className="close-button"
-          onClick={() => history.push("/automations")}
+          onClick={() => navigate("/automations")}
         >
           Close
         </button>

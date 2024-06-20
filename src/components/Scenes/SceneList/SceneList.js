@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./SceneList.scss";
-import { fetchScenes } from "../../services/sceneService";
+import { fetchScenes } from "../../../services/sceneService";
 import SceneItem from "../SceneItem/SceneItem";
 
 const SceneList = () => {

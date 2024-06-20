@@ -7,7 +7,7 @@ import QuickActions from "./QuickActions";
 import { fetchDevices } from "../../services/deviceService";
 import { fetchAutomations } from "../../services/automationService";
 import { fetchEnergyData } from "../../services/energyService";
-import { fetchUserProfile } from "../../services/userService";
+import userService from "../../services/userService";
 
 const Dashboard = () => {
   const [devices, setDevices] = useState([]);
@@ -21,7 +21,7 @@ const Dashboard = () => {
         const devicesData = await fetchDevices();
         const automationsData = await fetchAutomations();
         const energyData = await fetchEnergyData();
-        const userProfile = await fetchUserProfile();
+        const userProfile = await userService.fetchUserProfile();
         setDevices(devicesData);
         setAutomations(automationsData);
         setEnergyData(energyData);

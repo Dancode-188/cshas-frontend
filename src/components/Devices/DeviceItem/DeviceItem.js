@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./DeviceItem.scss";
-import { controlDevice } from "../../services/deviceService";
-import deviceIconLight from "../../assets/device-icon-light.svg";
-import deviceIconThermostat from "../../assets/device-icon-thermostat.svg";
-import deviceIconLock from "../../assets/device-icon-lock.svg";
+import { controlDevice } from "../../../services/deviceService";
+import deviceIconLight from "../../../assets/device-icon-light.svg";
+import deviceIconThermostat from "../../../assets/device-icon-thermostat.svg";
+import deviceIconLock from "../../../assets/device-icon-lock.svg";
 
 const DeviceItem = ({ device }) => {
   const [isLoading, setIsLoading] = useState(false);

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./AddScene.scss";
-import { createScene } from "../../services/sceneService";
-import { fetchDevices } from "../../services/deviceService";
+import { createScene } from "../../../services/sceneService";
+import { fetchDevices } from "../../../services/deviceService";
 
 const AddScene = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -62,7 +62,7 @@ const AddScene = () => {
       setIsLoading(true);
       try {
         await createScene(formData);
-        history.push("/scenes");
+        navigate("/scenes");
       } catch (error) {
         console.error("Failed to create scene:", error);
         // Display error feedback to the user
@@ -88,10 +88,7 @@ const AddScene = () => {
     <div className="add-scene">
       <div className="add-scene-header">
         <h2>Add Scene</h2>
-        <button
-          className="close-button"
-          onClick={() => history.push("/scenes")}
-        >
+        <button className="close-button" onClick={() => navigate("/scenes")}>
           Close
         </button>
       </div>

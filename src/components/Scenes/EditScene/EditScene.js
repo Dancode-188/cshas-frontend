@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./EditScene.scss";
-import { fetchSceneById, updateScene } from "../../services/sceneService";
-import { fetchDevices } from "../../services/deviceService";
+import { fetchSceneById, updateScene } from "../../../services/sceneService";
+import { fetchDevices } from "../../../services/deviceService";
 
 const EditScene = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { sceneId } = useParams();
   const [formData, setFormData] = useState({
     name: "",
@@ -26,12 +26,12 @@ const EditScene = () => {
         setIsLoading(false);
       } catch (error) {
         console.error("Failed to fetch scene and devices:", error);
-        history.push("/scenes");
+        navigate("/scenes");
       }
     };
 
     fetchData();
-  }, [sceneId, history]);
+  }, [sceneId, navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -71,7 +71,7 @@ const EditScene = () => {
       setIsLoading(true);
       try {
         await updateScene(sceneId, formData);
-        history.push("/scenes");
+        navigate("/scenes");
       } catch (error) {
         console.error("Failed to update scene:", error);
         // Display error feedback to the user
@@ -101,10 +101,7 @@ const EditScene = () => {
     <div className="edit-scene">
       <div className="edit-scene-header">
         <h2>Edit Scene</h2>
-        <button
-          className="close-button"
-          onClick={() => history.push("/scenes")}
-        >
+        <button className="close-button" onClick={() => navigate("/scenes")}>
           Close
         </button>
       </div>

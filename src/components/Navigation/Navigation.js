@@ -24,8 +24,9 @@ const Navigation = () => {
         <li>
           <NavLink
             to="/devices"
-            className="navigation-item"
-            activeClassName="active"
+            className={({ isActive }) =>
+              `navigation-item ${isActive ? "active" : ""}`
+            }
           >
             <img src={devicesIcon} alt="Devices" className="navigation-icon" />
             <span className="navigation-text">Devices</span>
@@ -34,8 +35,9 @@ const Navigation = () => {
         <li>
           <NavLink
             to="/automations"
-            className="navigation-item"
-            activeClassName="active"
+            className={({ isActive }) =>
+              `navigation-item ${isActive ? "active" : ""}`
+            }
           >
             <img
               src={automationsIcon}
@@ -48,8 +50,9 @@ const Navigation = () => {
         <li>
           <NavLink
             to="/scenes"
-            className="navigation-item"
-            activeClassName="active"
+            className={({ isActive }) =>
+              `navigation-item ${isActive ? "active" : ""}`
+            }
           >
             <img src={scenesIcon} alt="Scenes" className="navigation-icon" />
             <span className="navigation-text">Scenes</span>
@@ -58,8 +61,9 @@ const Navigation = () => {
         <li>
           <NavLink
             to="/settings"
-            className="navigation-item"
-            activeClassName="active"
+            className={({ isActive }) =>
+              `navigation-item ${isActive ? "active" : ""}`
+            }
           >
             <img
               src={settingsIcon}

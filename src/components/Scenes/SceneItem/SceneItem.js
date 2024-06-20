@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./SceneItem.scss";
-import { activateScene, deactivateScene } from "../../services/sceneService";
+import { activateScene, deactivateScene } from "../../../services/sceneService";
 
 const SceneItem = ({ scene }) => {
   const { id, name, description, icon, isActive } = scene;

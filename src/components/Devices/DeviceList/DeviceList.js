@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./DeviceList.scss";
-import { fetchDevices } from "../../services/deviceService";
+import { fetchDevices } from "../../../services/deviceService";
 import DeviceItem from "../DeviceItem/DeviceItem";
 
 const DeviceList = () => {

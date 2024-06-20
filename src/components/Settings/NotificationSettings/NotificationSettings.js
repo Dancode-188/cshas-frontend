@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./NotificationSettings.scss";
-import notificationService from "../../services/notificationService";
+import notificationService from "../../../services/notificationService";
 
 const NotificationSettings = ({ notificationSettings, onSettingsChange }) => {
   const [deviceAlerts, setDeviceAlerts] = useState(

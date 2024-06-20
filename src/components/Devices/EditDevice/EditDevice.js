@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./EditDevice.scss";
-import { fetchDeviceById, updateDevice } from "../../services/deviceService";
+import { fetchDeviceById, updateDevice } from "../../../services/deviceService";
 
 const EditDevice = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { deviceId } = useParams();
   const [formData, setFormData] = useState({
     name: "",
@@ -22,12 +22,12 @@ const EditDevice = () => {
         setIsLoading(false);
       } catch (error) {
         console.error("Failed to fetch device:", error);
-        history.push("/devices");
+        navigate("/devices");
       }
     };
 
     fetchDevice();
-  }, [deviceId, history]);
+  }, [deviceId, navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,7 +40,7 @@ const EditDevice = () => {
       setIsLoading(true);
       try {
         await updateDevice(deviceId, formData);
-        history.push("/devices");
+        navigate("/devices");
       } catch (error) {
         console.error("Failed to update device:", error);
         // Display error feedback to the user
@@ -73,10 +73,7 @@ const EditDevice = () => {
     <div className="edit-device">
       <div className="edit-device-header">
         <h2>Edit Device</h2>
-        <button
-          className="close-button"
-          onClick={() => history.push("/devices")}
-        >
+        <button className="close-button" onClick={() => navigate("/devices")}>
           Close
         </button>
       </div>

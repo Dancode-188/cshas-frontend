@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./AddDevice.scss";
-import { addDevice } from "../../services/deviceService";
+import { addDevice } from "../../../services/deviceService";
 
 const AddDevice = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     type: "",
@@ -24,7 +24,7 @@ const AddDevice = () => {
       setIsLoading(true);
       try {
         await addDevice(formData);
-        history.push("/devices");
+        navigate("/devices");
       } catch (error) {
         console.error("Failed to add device:", error);
         // Display error feedback to the user
@@ -53,10 +53,7 @@ const AddDevice = () => {
     <div className="add-device">
       <div className="add-device-header">
         <h2>Add Device</h2>
-        <button
-          className="close-button"
-          onClick={() => history.push("/devices")}
-        >
+        <button className="close-button" onClick={() => navigate("/devices")}>
           Close
         </button>
       </div>

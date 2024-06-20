@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./AutomationItem.scss";
-import { updateAutomation } from "../../services/automationService";
+import { updateAutomation } from "../../../services/automationService";
 
 const AutomationItem = ({ automation }) => {
   const { id, name, description, trigger, action, enabled } = automation;

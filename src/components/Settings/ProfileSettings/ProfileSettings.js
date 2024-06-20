@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ProfileSettings.scss";
-import userService from "../../services/userService";
+import userService from "../../../services/userService";
 
 const ProfileSettings = ({ profileSettings, onSettingsChange }) => {
   const [name, setName] = useState(profileSettings.name);

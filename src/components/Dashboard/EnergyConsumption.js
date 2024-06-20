@@ -3,6 +3,10 @@ import "./EnergyConsumption.scss";
 import { Line } from "react-chartjs-2";
 
 const EnergyConsumption = ({ energyData }) => {
+  if (!energyData) {
+    return <div>Loading...</div>;
+  }
+
   const chartData = {
     labels: energyData.labels,
     datasets: [

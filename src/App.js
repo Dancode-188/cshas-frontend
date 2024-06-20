@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navigation/Navigation";
@@ -13,7 +13,9 @@ import EditAutomation from "./components/Automations/EditAutomation/EditAutomati
 import SceneList from "./components/Scenes/SceneList/SceneList";
 import AddScene from "./components/Scenes/AddScene/AddScene";
 import EditScene from "./components/Scenes/EditScene/EditScene";
-import Settings from "./components/Settings/Settings";
+import NotificationSettings from "./components/Settings/NotificationSettings/NotificationSettings";
+import ProfileSettings from "./components/Settings/ProfileSettings/ProfileSettings";
+import SettingsForm from "./components/Settings/SettingsForm/SettingsForm";
 
 const App = () => {
   return (
@@ -22,27 +24,27 @@ const App = () => {
         <Header />
         <Navigation />
         <main className="main-content">
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            <Route exact path="/devices" component={DeviceList} />
-            <Route exact path="/devices/add" component={AddDevice} />
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/devices" element={<DeviceList />} />
+            <Route path="/devices/add" element={<AddDevice />} />
+            <Route path="/devices/edit/:deviceId" element={<EditDevice />} />
+            <Route path="/automations" element={<AutomationList />} />
+            <Route path="/automations/add" element={<AddAutomation />} />
             <Route
-              exact
-              path="/devices/edit/:deviceId"
-              component={EditDevice}
-            />
-            <Route exact path="/automations" component={AutomationList} />
-            <Route exact path="/automations/add" component={AddAutomation} />
-            <Route
-              exact
               path="/automations/edit/:automationId"
-              component={EditAutomation}
+              element={<EditAutomation />}
             />
-            <Route exact path="/scenes" component={SceneList} />
-            <Route exact path="/scenes/add" component={AddScene} />
-            <Route exact path="/scenes/edit/:sceneId" component={EditScene} />
-            <Route exact path="/settings" component={Settings} />
-          </Switch>
+            <Route path="/scenes" element={<SceneList />} />
+            <Route path="/scenes/add" element={<AddScene />} />
+            <Route path="/scenes/edit/:sceneId" element={<EditScene />} />
+            <Route path="/settings-form" element={<SettingsForm />} />
+            <Route path="/profile-settings" element={<ProfileSettings />} />
+            <Route
+              path="/notification-settings"
+              element={<NotificationSettings />}
+            />
+          </Routes>
         </main>
         <Footer />
       </div>

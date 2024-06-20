@@ -44,12 +44,29 @@ textarea {
   max-width: 1200px;
   margin: 0 auto;
   padding: $spacing-medium;
+
+  @media screen and (max-width: $breakpoint-large) {
+    max-width: 960px;
+  }
+
+  @media screen and (max-width: $breakpoint-medium) {
+    max-width: 720px;
+  }
+
+  @media screen and (max-width: $breakpoint-small) {
+    max-width: 100%;
+    padding: $spacing-medium $spacing-small;
+  }
 }
 
 .section-title {
   @include futuristic-typography;
   font-size: $font-size-large;
   margin-bottom: $spacing-medium;
+
+  @media screen and (max-width: $breakpoint-small) {
+    font-size: $font-size-base;
+  }
 }
 
 .card {
@@ -57,4 +74,8 @@ textarea {
   border: 1px solid $border-color;
   padding: $spacing-medium;
   margin-bottom: $spacing-medium;
+
+  @media screen and (max-width: $breakpoint-small) {
+    padding: $spacing-small;
+  }
 }

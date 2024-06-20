@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./AutomationList.scss";
-import { fetchAutomations } from "../../services/automationService";
+import { fetchAutomations } from "../../../services/automationService";
 import AutomationItem from "../AutomationItem/AutomationItem";
 
 const AutomationList = () => {
