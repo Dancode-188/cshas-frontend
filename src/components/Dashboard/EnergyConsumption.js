@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./EnergyConsumption.scss";
 import { Line } from "react-chartjs-2";
+import { fetchEnergyData } from "../../services/energyService";
 
-const EnergyConsumption = ({ energyData }) => {
+const EnergyConsumption = () => {
+  const [energyData, setEnergyData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadEnergyData = async () => {
+      try {
+        setIsLoading(true);
+        const data = await fetchEnergyData();
+        setEnergyData(data);
+        setIsLoading(false);
+      } catch (err) {
+        setError("Failed to fetch energy data. Please try again later.");
+        setIsLoading(false);
+      }
+    };
+
+    loadEnergyData();
+  }, []);
+
+  if (isLoading) {
+    return <div className="energy-consumption">Loading energy data...</div>;
+  }
+
+  if (error) {
+    return <div className="energy-consumption error">{error}</div>;
+  }
+
   if (!energyData) {
-    return <div>Loading...</div>;
+    return <div className="energy-consumption">No energy data available.</div>;
   }
 
   const chartData = {
