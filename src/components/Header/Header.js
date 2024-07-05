@@ -4,11 +4,16 @@ import logo from "../../assets/logo.png";
 import userProfile from "../../assets/user-profile.jpg";
 import notificationIcon from "../../assets/notification-icon.svg";
 
-const Header = () => {
+const Header = ({ toggleNav }) => {
   return (
     <header className="header">
-      <div className="logo-container">
-        <img src={logo} alt="CSHAS Logo" className="logo" />
+      <div className="header-left">
+        <button className="nav-toggle" onClick={toggleNav}>
+          <span className="toggle-icon"></span>
+        </button>
+        <div className="logo-container">
+          <img src={logo} alt="CSHAS Logo" className="logo" />
+        </div>
       </div>
       <div className="user-profile">
         <img src={userProfile} alt="User Profile" className="profile-picture" />

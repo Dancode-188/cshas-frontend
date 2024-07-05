@@ -3,70 +3,22 @@
 .navigation {
   position: fixed;
   top: 0;
-  left: 0;
+  left: -250px; // Start off-screen
   width: 250px;
-  height: 100vh;
+  height: 100%;
   background-color: $background-color;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 100;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+  overflow-y: auto; // Allow scrolling if content is too long
+  padding-top: 60px;
 
   &.open {
-    transform: translateX(0);
-  }
-
-  .navigation-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 1rem;
-
-    .navigation-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-
-      .toggle-icon {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background-color: $text-color;
-        position: relative;
-        transition: background-color 0.3s;
-
-        &::before,
-        &::after {
-          content: '';
-          position: absolute;
-          width: 100%;
-          height: 2px;
-          background-color: $text-color;
-          transition: transform 0.3s;
-        }
-
-        &::before {
-          top: -8px;
-        }
-
-        &::after {
-          top: 8px;
-        }
-      }
-
-      &:hover .toggle-icon {
-        background-color: $accent-color;
-
-        &::before,
-        &::after {
-          background-color: $accent-color;
-        }
-      }
-    }
+    left: 0; // Slide in when open
   }
 
   .navigation-menu {
     list-style: none;
-    padding: 0;
+    padding: 20px 0; // Add some padding at the top and bottom
     margin: 0;
 
     .navigation-item {

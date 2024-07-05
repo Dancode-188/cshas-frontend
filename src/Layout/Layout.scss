@@ -1,0 +1,25 @@
+.app {
+    display: flex;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+
+    &.nav-open {
+      .main-content {
+        margin-left: 250px; // Adjust based on your navigation width
+      }
+    }
+  }
+
+  .main-content {
+    flex: 1;
+    transition: margin-left 0.3s ease;
+    width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .app.nav-open {
+      .main-content {
+        margin-left: 0;
+      }
+    }
+}

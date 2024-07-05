@@ -30,7 +30,6 @@ const Dashboard = () => {
         console.error("Failed to fetch dashboard data:", error);
       }
     };
-
     fetchData();
   }, []);
 

@@ -1,0 +1,52 @@
+@import './styles/variables.scss';
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  .main-content {
+    flex: 1;
+    transition: margin-left 0.3s ease;
+    margin-top: 60px; // Adjust based on your header height
+    margin-bottom: 60px; // Adjust based on your footer height
+    padding: 20px;
+  
+    .app.nav-open & {
+      margin-left: 250px; // Adjust based on your navigation width
+    }
+  }
+  
+  .navigation {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: $background-color;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+    padding-top: 60px; // Add padding to account for the fixed header
+    padding-bottom: 60px; // Add padding to account for the fixed footer
+  
+    &.open {
+      left: 0;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .main-content {
+      .app.nav-open & {
+        margin-left: 0;
+      }
+    }
+  
+    .navigation {
+      &.open {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }

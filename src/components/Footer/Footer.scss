@@ -1,12 +1,18 @@
 @import '../../styles/variables.scss';
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001; // Ensure footer is above the navigation
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: lighten($background-color, 10%);
   padding: 1rem;
   font-size: 14px;
+  transition: none; // Remove any transition that might be affecting it
 
   .footer-links {
     display: flex;
@@ -41,5 +47,14 @@
 
   .footer-text {
     color: $text-color;
+  }
+}
+
+// Add a media query for smaller screens if needed
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem;
   }
 }

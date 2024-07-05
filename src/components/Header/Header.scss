@@ -1,11 +1,66 @@
 @import '../../styles/variables.scss';
 
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10001;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: $background-color;
   padding: 1rem;
+  transition: left 0.3s ease;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+
+    .nav-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-right: 1rem;
+      padding: 0.5rem;
+
+      .toggle-icon {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background-color: $text-color;
+        position: relative;
+        transition: background-color 0.3s;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          background-color: $text-color;
+          transition: transform 0.3s;
+        }
+
+        &::before {
+          top: -8px;
+        }
+
+        &::after {
+          top: 8px;
+        }
+      }
+
+      &:hover .toggle-icon {
+        background-color: $accent-color;
+
+        &::before,
+        &::after {
+          background-color: $accent-color;
+        }
+      }
+    }
+  }
 
   .logo-container {
     .logo {
@@ -51,6 +106,14 @@
         padding: 2px 6px;
         border-radius: 50%;
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    .app.nav-open & {
+      left: 0;
     }
   }
 }
