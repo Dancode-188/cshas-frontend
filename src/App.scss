@@ -13,6 +13,7 @@
   margin-top: 50px; // Adjust based on your mobile header height
   margin-bottom: 50px; // Adjust based on your mobile footer height
   padding: 15px;
+  width: 100%;
 
   @media (min-width: 576px) {
     padding: 20px;
@@ -24,10 +25,11 @@
   }
 
   @media (min-width: 992px) {
-    transition: margin-left 0.3s ease;
+    transition: margin-left 0.3s ease, width 0.3s ease;
 
     .app.nav-open & {
       margin-left: 250px; // Adjust based on your navigation width
+      width: calc(100% - 250px); // Adjust based on your navigation width
     }
   }
 }
