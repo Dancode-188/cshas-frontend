@@ -3,22 +3,40 @@
 
 .profile-settings {
   background-color: $secondary-color;
-  padding: $spacing-large;
+  padding: $spacing-medium;
   border-radius: 4px;
+
+  @media (min-width: 768px) {
+    padding: $spacing-large;
+  }
 
   .section-title {
     @include futuristic-typography;
-    margin-bottom: $spacing-large;
+    margin-bottom: $spacing-medium;
+    font-size: 1.25rem;
+
+    @media (min-width: 768px) {
+      margin-bottom: $spacing-large;
+      font-size: 1.5rem;
+    }
+  }
+
+  .success-message,
+  .error-message {
+    margin-bottom: $spacing-medium;
+    font-size: 0.9rem;
+
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
   }
 
   .success-message {
     color: green;
-    margin-bottom: $spacing-medium;
   }
 
   .error-message {
     color: red;
-    margin-bottom: $spacing-medium;
   }
 
   form {
@@ -29,6 +47,11 @@
         display: block;
         color: $text-color;
         margin-bottom: $spacing-small;
+        font-size: 0.9rem;
+
+        @media (min-width: 768px) {
+          font-size: 1rem;
+        }
       }
 
       input {
@@ -37,6 +60,12 @@
         border: none;
         background-color: $background-color;
         color: $text-color;
+        font-size: 0.9rem;
+
+        @media (min-width: 768px) {
+          font-size: 1rem;
+          padding: $spacing-small $spacing-medium;
+        }
       }
     }
 
@@ -45,9 +74,17 @@
       background-color: $accent-color;
       color: $text-color;
       border: none;
-      padding: $spacing-medium $spacing-large;
+      padding: $spacing-small $spacing-medium;
       cursor: pointer;
       transition: background-color 0.3s;
+      font-size: 0.9rem;
+      width: 100%;
+
+      @media (min-width: 576px) {
+        width: auto;
+        padding: $spacing-medium $spacing-large;
+        font-size: 1rem;
+      }
 
       &:hover {
         background-color: lighten($accent-color, 10%);

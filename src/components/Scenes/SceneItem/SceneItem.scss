@@ -3,21 +3,35 @@
 .scene-item {
   background-color: $secondary-color;
   border-radius: 4px;
-  padding: 1rem;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   transition: transform 0.3s;
 
+  @media (min-width: 576px) {
+    padding: 1rem;
+  }
+
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+
+    @media (min-width: 768px) {
+      transform: translateY(-4px);
+    }
   }
 
   .scene-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1rem;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 0.75rem;
+
+    @media (min-width: 576px) {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1rem;
+    }
 
     img {
       width: 100%;
@@ -28,35 +42,63 @@
   }
 
   .scene-details {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+
+    @media (min-width: 576px) {
+      margin-bottom: 1rem;
+    }
 
     .scene-name {
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: $text-color;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
+
+      @media (min-width: 576px) {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
     }
 
     .scene-description {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: $text-color;
+
+      @media (min-width: 576px) {
+        font-size: 0.9rem;
+      }
     }
   }
 
   .scene-actions {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+
+    @media (min-width: 576px) {
+      gap: 1rem;
+    }
 
     .activate-button,
-    .deactivate-button {
-      padding: 0.5rem 1rem;
+    .deactivate-button,
+    .edit-button {
+      padding: 0.4rem 0.75rem;
       border: none;
       border-radius: 4px;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: bold;
       color: $text-color;
-      background-color: $accent-color;
       cursor: pointer;
       transition: background-color 0.3s;
+
+      @media (min-width: 576px) {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    .activate-button {
+      background-color: $accent-color;
 
       &:hover {
         background-color: darken($accent-color, 10%);
@@ -72,15 +114,8 @@
     }
 
     .edit-button {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      color: $text-color;
       background-color: $primary-color;
       text-decoration: none;
-      transition: background-color 0.3s;
 
       &:hover {
         background-color: darken($primary-color, 10%);

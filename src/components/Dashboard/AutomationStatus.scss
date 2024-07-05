@@ -1,10 +1,21 @@
 @import '../../styles/variables.scss';
 
 .automation-status {
+  padding: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 1.5rem;
+  }
+
   .automation-status-title {
     color: $primary-color;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+
+    @media (min-width: 768px) {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
   }
 
   .automation-list {
@@ -13,18 +24,39 @@
 
     .automation-item {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      padding: 0.75rem;
+      background-color: lighten($background-color, 5%);
+      border-radius: 4px;
+
+      @media (min-width: 576px) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+      }
 
       .automation-name {
         color: $text-color;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+
+        @media (min-width: 576px) {
+          font-size: 1rem;
+          margin-bottom: 0;
+        }
       }
 
       .automation-status {
         font-size: 0.8rem;
         padding: 0.25rem 0.5rem;
         border-radius: 4px;
+        align-self: flex-start;
+
+        @media (min-width: 576px) {
+          align-self: center;
+        }
 
         &.active {
           background-color: $success-color;

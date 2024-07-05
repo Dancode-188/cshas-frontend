@@ -3,19 +3,39 @@
 
 .settings-form {
   display: flex;
+  flex-direction: column;
   background-color: $background-color;
   color: $text-color;
-  padding: $spacing-large;
+  padding: $spacing-medium;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding: $spacing-large;
+  }
 
   .settings-tabs {
-    width: 200px;
-    margin-right: $spacing-large;
+    width: 100%;
+    margin-bottom: $spacing-medium;
+
+    @media (min-width: 768px) {
+      width: 200px;
+      margin-right: $spacing-large;
+      margin-bottom: 0;
+    }
 
     .settings-tab {
       @include futuristic-typography;
-      padding: $spacing-medium;
+      padding: $spacing-small;
       cursor: pointer;
       transition: background-color 0.3s;
+      font-size: 0.9rem;
+      text-align: center;
+
+      @media (min-width: 768px) {
+        padding: $spacing-medium;
+        font-size: 1rem;
+        text-align: left;
+      }
 
       &:hover {
         background-color: lighten($background-color, 10%);
@@ -36,9 +56,18 @@
     background-color: $accent-color;
     color: $text-color;
     border: none;
-    padding: $spacing-medium $spacing-large;
+    padding: $spacing-small $spacing-medium;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-top: $spacing-medium;
+
+    @media (min-width: 576px) {
+      width: auto;
+      padding: $spacing-medium $spacing-large;
+      font-size: 1rem;
+    }
 
     &:hover {
       background-color: lighten($accent-color, 10%);

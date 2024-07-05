@@ -2,44 +2,83 @@
 
 .device-item {
   display: flex;
-  align-items: center;
-  padding: 1rem;
+  flex-direction: column;
+  padding: 0.75rem;
   background-color: $secondary-color;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 
+  @media (min-width: 576px) {
+    flex-direction: row;
+    align-items: center;
+    padding: 1rem;
+  }
+
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+
+    @media (min-width: 768px) {
+      transform: translateY(-4px);
+    }
   }
 
   .device-icon {
-    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+
+    @media (min-width: 576px) {
+      margin-right: 1rem;
+      margin-bottom: 0;
+    }
 
     img {
-      width: 48px;
-      height: 48px;
+      width: 36px;
+      height: 36px;
+
+      @media (min-width: 768px) {
+        width: 48px;
+        height: 48px;
+      }
     }
   }
 
   .device-details {
     flex-grow: 1;
+    margin-bottom: 0.75rem;
+
+    @media (min-width: 576px) {
+      margin-bottom: 0;
+    }
 
     .device-name {
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: $text-color;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
+
+      @media (min-width: 768px) {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
     }
 
     .device-type {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: lighten($text-color, 30%);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
+
+      @media (min-width: 768px) {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+      }
     }
 
     .device-status {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: bold;
+
+      @media (min-width: 768px) {
+        font-size: 1rem;
+      }
 
       &.on {
         color: $accent-color;
@@ -53,18 +92,38 @@
 
   .device-controls {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
 
-    .toggle-button {
-      padding: 0.5rem 1rem;
+    @media (min-width: 576px) {
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    .toggle-button,
+    .edit-button {
+      width: 100%;
+      padding: 0.5rem;
       border: none;
       border-radius: 4px;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: bold;
       color: $text-color;
       cursor: pointer;
       transition: background-color 0.3s;
+      text-align: center;
 
+      @media (min-width: 576px) {
+        width: auto;
+        padding: 0.5rem 1rem;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+
+    .toggle-button {
       &.on {
         background-color: $accent-color;
       }
@@ -73,7 +132,7 @@
         background-color: darken($secondary-color, 10%);
       }
 
-      &:hover {
+      &:hover:not(:disabled) {
         background-color: darken($accent-color, 10%);
       }
 
@@ -84,15 +143,8 @@
     }
 
     .edit-button {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-weight: bold;
-      color: $text-color;
       background-color: $primary-color;
       text-decoration: none;
-      transition: background-color 0.3s;
 
       &:hover {
         background-color: darken($primary-color, 10%);
