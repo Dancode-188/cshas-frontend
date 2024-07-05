@@ -8,7 +8,7 @@ export async function fetchDevices() {
     return response.data;
   } catch (error) {
     console.error("Failed to fetch devices:", error);
-    return [];
+    throw error;
   }
 }
 
