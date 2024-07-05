@@ -1,10 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.scss";
 import logo from "../../assets/logo.png";
-import userProfile from "../../assets/user-profile.jpg";
+import defaultUserProfile from "../../assets/user-profile.jpg";
 import notificationIcon from "../../assets/notification-icon.svg";
+import userService from "../../services/userService";
+import notificationService from "../../services/notificationService";
 
 const Header = ({ toggleNav }) => {
+  const [userProfile, setUserProfile] = useState(null);
+  const [notificationCount, setNotificationCount] = useState(0);
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const profile = await userService.fetchUserProfile();
+        setUserProfile(profile);
+      } catch (error) {
+        console.error("Failed to fetch user profile:", error);
+      }
+    };
+
+    const fetchNotifications = async () => {
+      try {
+        const notifications = await notificationService.getNotifications();
+        setNotificationCount(notifications.length);
+      } catch (error) {
+        console.error("Failed to fetch notifications:", error);
+      }
+    };
+
+    fetchUserProfile();
+    fetchNotifications();
+  }, []);
+
   return (
     <header className="header">
       <div className="header-left">
@@ -16,15 +44,21 @@ const Header = ({ toggleNav }) => {
         </div>
       </div>
       <div className="user-profile">
-        <img src={userProfile} alt="User Profile" className="profile-picture" />
-        <span className="profile-name">John Doe</span>
+        <img
+          src={userProfile?.profilePicture || defaultUserProfile}
+          alt="User Profile"
+          className="profile-picture"
+        />
+        <span className="profile-name">
+          {userProfile?.name || "Loading..."}
+        </span>
         <div className="notification-icons">
           <img
             src={notificationIcon}
             alt="Notification"
             className="notification-icon"
           />
-          <span className="notification-badge">3</span>
+          <span className="notification-badge">{notificationCount}</span>
         </div>
       </div>
     </header>
