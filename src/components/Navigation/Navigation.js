@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Navigation.scss";
+import dashboardIcon from "../../assets/dashboard-icon.svg"; // You'll need to add this icon
 import devicesIcon from "../../assets/devices-icon.svg";
 import automationsIcon from "../../assets/automations-icon.svg";
 import scenesIcon from "../../assets/scenes-icon.svg";
@@ -10,6 +11,22 @@ const Navigation = ({ isOpen, toggleMenu }) => {
   return (
     <nav className={`navigation ${isOpen ? "open" : ""}`}>
       <ul className="navigation-menu">
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `navigation-item ${isActive ? "active" : ""}`
+            }
+            onClick={toggleMenu}
+          >
+            <img
+              src={dashboardIcon}
+              alt="Dashboard"
+              className="navigation-icon"
+            />
+            <span className="navigation-text">Dashboard</span>
+          </NavLink>
+        </li>
         <li>
           <NavLink
             to="/devices"

@@ -10,7 +10,8 @@
   transition: left 0.3s ease-in-out;
   z-index: 1000;
   overflow-y: auto; // Allow scrolling if content is too long
-  padding-top: 60px;
+  padding-top: 80px; // Adjust this value based on your header height
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 
   &.open {
     left: 0; // Slide in when open
@@ -18,16 +19,21 @@
 
   .navigation-menu {
     list-style: none;
-    padding: 20px 0; // Add some padding at the top and bottom
+    padding: 0;
     margin: 0;
+
+    li {
+      margin-bottom: 5px;
+    }
 
     .navigation-item {
       display: flex;
       align-items: center;
-      padding: 1rem;
+      padding: 0.75rem 1rem;
       color: $secondary-color;
       text-decoration: none;
       transition: background-color 0.3s, color 0.3s;
+      border-left: 4px solid transparent;
 
       &:hover {
         background-color: lighten($background-color, 10%);
@@ -37,18 +43,32 @@
       &.active {
         background-color: lighten($background-color, 15%);
         color: $accent-color;
+        border-left-color: $accent-color;
       }
 
       .navigation-icon {
-        width: 24px;
-        height: 24px;
+        width: 20px;
+        height: 20px;
         margin-right: 1rem;
         fill: currentColor;
       }
 
       .navigation-text {
-        font-size: 16px;
+        font-size: 14px;
+        font-weight: 500;
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navigation {
+    left: -100%;
+    width: 100%;
+    max-width: 250px;
+
+    &.open {
+      left: 0;
     }
   }
 }
