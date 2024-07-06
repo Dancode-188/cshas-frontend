@@ -53,6 +53,7 @@ export const registerUser = (userData) =>
 export const loginUser = (credentials) =>
   api.post("/api/users/login", credentials);
 export const getUserProfile = () => api.get("/api/users/profile");
+export const updateUserProfile = (profileData) => api.put('/api/users/profile', profileData);
 
 // Device related functions
 export const getAllDevices = () => api.get("/api/devices");
