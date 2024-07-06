@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE_URL, AUTH_TOKEN_KEY } from "../utils/constants";
+import { API_BASE_URL } from "../utils/constants";
 import { getAuthToken, removeAuthToken } from "../utils/helpers";
 
 // Create an instance of axios with base configuration
