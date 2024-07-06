@@ -1,28 +1,16 @@
 import api from "./api";
 
 const notificationService = {
-  updateNotificationSettings: async (notificationSettings) => {
-    try {
-      const response = await api.put(
-        "/users/notification-settings",
-        notificationSettings
-      );
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to update notification settings");
-    }
-  },
+  updateNotificationSettings: (notificationSettings) =>
+    api.updateNotificationSettings(notificationSettings),
 
-  getNotifications: async () => {
-    try {
-      const response = await api.get("/notifications");
-      return response.data;
-    } catch (error) {
-      throw new Error("Failed to fetch notifications");
-    }
-  },
+  getNotifications: () => api.getNotifications(),
 
-  // Add more notification-related service methods as needed
+  markNotificationAsRead: (notificationId) =>
+    api.markNotificationAsRead(notificationId),
+
+  deleteNotification: (notificationId) =>
+    api.deleteNotification(notificationId),
 };
 
 export default notificationService;
