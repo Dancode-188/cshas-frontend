@@ -8,11 +8,17 @@ import {
 
 // Formatting helpers
 export function formatDate(date) {
-  const options = { year: "numeric", month: "long", day: "numeric" };
-  return date.toLocaleDateString("en-US", options);
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+  return new Date(date).toLocaleDateString("en-US", options);
 }
 
-export function formatTemperature(temperature, unit) {
+export function formatTemperature(temperature, unit = "C") {
   return `${temperature}°${unit.toUpperCase()}`;
 }
 
@@ -32,12 +38,15 @@ export function getAuthToken() {
   return localStorage.getItem(AUTH_TOKEN_KEY);
 }
 
-export function setAuthToken(token) {
+export function setAuthToken(token, expiresIn) {
   localStorage.setItem(AUTH_TOKEN_KEY, token);
+  const expirationTime = Date.now() + expiresIn * 1000;
+  localStorage.setItem(AUTH_EXPIRATION_KEY, expirationTime.toString());
 }
 
 export function removeAuthToken() {
   localStorage.removeItem(AUTH_TOKEN_KEY);
+  localStorage.removeItem(AUTH_EXPIRATION_KEY);
 }
 
 export function isAuthenticated() {
@@ -47,7 +56,7 @@ export function isAuthenticated() {
   }
   const expirationTime = localStorage.getItem(AUTH_EXPIRATION_KEY);
   const currentTime = Date.now();
-  return currentTime < expirationTime;
+  return currentTime < parseInt(expirationTime, 10);
 }
 
 // Device helpers
@@ -66,4 +75,39 @@ export function getDeviceIcon(deviceType) {
 
 export function getDeviceStateColor(deviceState) {
   return deviceState ? "green" : "red";
+}
+
+// New helper functions
+
+export function truncateString(str, maxLength) {
+  if (str.length <= maxLength) return str;
+  return str.slice(0, maxLength) + "...";
+}
+
+export function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+export function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function formatFileSize(bytes) {
+  if (bytes === 0) return "0 Bytes";
+  const k = 1024;
+  const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+}
+
+export function generateUniqueId() {
+  return Date.now().toString(36) + Math.random().toString(36).substr(2);
 }
