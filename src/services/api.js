@@ -81,4 +81,10 @@ export const updateAutomation = (automationId, automationData) =>
 export const deleteAutomation = (automationId) =>
   api.delete(`/api/automations/${automationId}`);
 
+//Energy related functions
+export const getEnergyConsumption = () => api.get('/api/energy');
+export const getDeviceEnergyConsumption = (deviceId) => api.get(`/api/energy/device/${deviceId}`);
+export const getEnergyConsumptionByDateRange = (startDate, endDate) => 
+  api.get('/api/energy/range', { params: { startDate, endDate } });
+
 export default api;

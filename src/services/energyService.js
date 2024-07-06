@@ -1,13 +1,12 @@
 import api from "./api";
-import { API_ENERGY_ENDPOINT } from "../utils/constants";
 
 // Fetch energy consumption data
-export const fetchEnergyData = async () => {
-  try {
-    const response = await api.get(API_ENERGY_ENDPOINT);
-    return response.data;
-  } catch (error) {
-    console.error("Failed to fetch energy data:", error);
-    throw error;
-  }
-};
+export const fetchEnergyData = () => api.getEnergyConsumption();
+
+// Fetch energy consumption data for a specific device
+export const fetchDeviceEnergyData = (deviceId) =>
+  api.getDeviceEnergyConsumption(deviceId);
+
+// Fetch energy consumption data for a specific time range
+export const fetchEnergyDataByDateRange = (startDate, endDate) =>
+  api.getEnergyConsumptionByDateRange(startDate, endDate);
