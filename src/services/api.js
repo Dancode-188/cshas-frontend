@@ -93,4 +93,13 @@ export const updateNotificationSettings = (settings) => api.put('/api/notificati
 export const markNotificationAsRead = (notificationId) => api.put(`/api/notifications/${notificationId}/read`);
 export const deleteNotification = (notificationId) => api.delete(`/api/notifications/${notificationId}`);
 
+//Scenes related functions
+export const getAllScenes = () => api.get('/api/scenes');
+export const getSceneById = (sceneId) => api.get(`/api/scenes/${sceneId}`);
+export const createScene = (sceneData) => api.post('/api/scenes', sceneData);
+export const updateScene = (sceneId, sceneData) => api.put(`/api/scenes/${sceneId}`, sceneData);
+export const deleteScene = (sceneId) => api.delete(`/api/scenes/${sceneId}`);
+export const activateScene = (sceneId) => api.post(`/api/scenes/${sceneId}/activate`);
+export const deactivateScene = (sceneId) => api.post(`/api/scenes/${sceneId}/deactivate`);
+
 export default api;

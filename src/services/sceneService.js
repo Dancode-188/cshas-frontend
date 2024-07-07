@@ -1,79 +1,23 @@
 import api from "./api";
-import { API_SCENES_ENDPOINT } from "../utils/constants";
 
 // Fetch all scenes
-export const fetchScenes = async () => {
-  try {
-    const response = await api.get(API_SCENES_ENDPOINT);
-    return response.data;
-  } catch (error) {
-    console.error("Failed to fetch scenes:", error);
-    throw error;
-  }
-};
+export const fetchScenes = () => api.getAllScenes();
 
 // Fetch a single scene by ID
-export const fetchSceneById = async (sceneId) => {
-  try {
-    const response = await api.get(`${API_SCENES_ENDPOINT}/${sceneId}`);
-    return response.data;
-  } catch (error) {
-    console.error(`Failed to fetch scene with ID ${sceneId}:`, error);
-    throw error;
-  }
-};
+export const fetchSceneById = (sceneId) => api.getSceneById(sceneId);
 
 // Create a new scene
-export const createScene = async (sceneData) => {
-  try {
-    const response = await api.post(API_SCENES_ENDPOINT, sceneData);
-    return response.data;
-  } catch (error) {
-    console.error("Failed to create scene:", error);
-    throw error;
-  }
-};
+export const createScene = (sceneData) => api.createScene(sceneData);
 
 // Update an existing scene
-export const updateScene = async (sceneId, sceneData) => {
-  try {
-    const response = await api.put(
-      `${API_SCENES_ENDPOINT}/${sceneId}`,
-      sceneData
-    );
-    return response.data;
-  } catch (error) {
-    console.error(`Failed to update scene with ID ${sceneId}:`, error);
-    throw error;
-  }
-};
+export const updateScene = (sceneId, sceneData) =>
+  api.updateScene(sceneId, sceneData);
 
 // Delete a scene
-export const deleteScene = async (sceneId) => {
-  try {
-    await api.delete(`${API_SCENES_ENDPOINT}/${sceneId}`);
-  } catch (error) {
-    console.error(`Failed to delete scene with ID ${sceneId}:`, error);
-    throw error;
-  }
-};
+export const deleteScene = (sceneId) => api.deleteScene(sceneId);
 
 // Activate a scene
-export const activateScene = async (sceneId) => {
-  try {
-    await api.post(`${API_SCENES_ENDPOINT}/${sceneId}/activate`);
-  } catch (error) {
-    console.error(`Failed to activate scene with ID ${sceneId}:`, error);
-    throw error;
-  }
-};
+export const activateScene = (sceneId) => api.activateScene(sceneId);
 
 // Deactivate a scene
-export const deactivateScene = async (sceneId) => {
-  try {
-    await api.post(`${API_SCENES_ENDPOINT}/${sceneId}/deactivate`);
-  } catch (error) {
-    console.error(`Failed to deactivate scene with ID ${sceneId}:`, error);
-    throw error;
-  }
-};
+export const deactivateScene = (sceneId) => api.deactivateScene(sceneId);
